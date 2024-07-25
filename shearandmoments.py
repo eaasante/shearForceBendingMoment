@@ -11,7 +11,7 @@ magnitude as a negative value.
 """
 
 import numpy as np
-import matplotlib.pyplus as plt
+import matplotlib.pyplot as plt
 import pyinputplus as pyin
 
 def step_sf(x, a):
