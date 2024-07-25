@@ -11,7 +11,7 @@ magnitude as a negative value.
 """
 
 import numpy as np
-import matplotlib.pypl
+import matplotlib.pyplus as plt
 import pyinputplus as pyin
 
 def step_sf(x, a):
@@ -86,9 +86,9 @@ def main():
             span = np.zeros(k)
             dis = np.zeros(k)
             for i in range(k):
-                wx = pyin.Float('Enter the magnitude of the UDL in kN/m: ')
-                spanx = pyin.Float('Enter the span of the UDL in meters: ', min=0, max=L)
-                disx = pyin.Float('Enter the distance of the left end of UDL from the left support in meters: ', min=spanx-L, max=L-spanx)
+                wx = pyin.inputFloat('Enter the magnitude of the UDL in kN/m: ')
+                spanx = pyin.inputFloat('Enter the span of the UDL in meters: ', min=0, max=L)
+                disx = pyin.inputFloat('Enter the distance of the left end of UDL from the left support in meters: ', min=spanx-L, max=L-spanx)
                 w[i] = wx
                 span[i] = spanx
                 dis[i] = disx
