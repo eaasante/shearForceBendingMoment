@@ -49,7 +49,7 @@ def main():
         print('2. Simply supported/overhang beam with only UDL(s) on the span')
         print('3. Simply supported/overhang beam with UDL and point loads on the span')
         print('4. Simply supported/overhang beam with UDL(s), point load(s) and concentrated moment(s) on the span')
-        n = int(pyin.inputInt('Please select any of the above: ', min=1, max=4))
+        n = pyin.inputInt('Please select any of the above: ', min=1, max=4)
 
         L = pyin.inputFloat('Enter the length of the beam: ', min=0)
 
