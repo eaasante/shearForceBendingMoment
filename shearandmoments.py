@@ -26,17 +26,17 @@ def quad_sf(x, a):
 def plot_graphs(l, V, M):
     plt.subplot(211)
     plt.plot(l, V, 'r', linewidth=1.5)
-    plt.axhline(0, color='k', linetype="--")
-    plt.xlabel('Distances in meters')
-    plt.ylabel('Shear Force in kN')
-    plt.title('Shear Force diagram')
+    plt.axhline(0, color='k', linestyle="--")
+    plt.xlabel('Distances in meters', fontweight="bold")
+    plt.ylabel('Shear Force in kN', fontweight="bold")
+    plt.title('Shear Force diagram', fontweight="bold")
 
     plt.subplot(212)
     plt.plot(l, M, 'r', linewidth=1.5)
-    plt.axhline(0, color='k', linetype="--")
-    plt.xlabel('Distances in meters')
-    plt.ylabel('Bending Moment in kNm')
-    plt.title('Bending Moment Diagram')
+    plt.axhline(0, color='k', linestyle="--")
+    plt.xlabel('Distances in meters', fontweight="bold")
+    plt.ylabel('Bending Moment in kNm', fontweight="bold")
+    plt.title('Bending Moment Diagram', fontweight="bold")
 
     plt.show()
 
@@ -75,10 +75,9 @@ def main():
             V = RA * step_sf(l, 0.001) - np.sum([P[i] * step_sf(l, x[i]) for i in range(k)], axis=0) + RB * step_sf(l, L)
             M = RA * lin_sf(l, 0.001) - np.sum([P[i] * lin_sf(l, x[i]) for i in range(k)], axis=0) + RB * lin_sf(l, L)
 
-            plot_graphs(l, V, M)
             print(f'RA={RA:.2f} kN')
-            print(f'RB={RB:.2f} kN')
-
+            print(f'MA={MA:.2f} kNm')
+            plot_graphs(l, V, M)
 
         elif n == 2:
             k = pyin.inputInt('Enter the number of UDLs: ', min=0)
@@ -106,9 +105,10 @@ def main():
             V = ReactionatA * step_sf(l, 0.001) - np.sum([w[i] * lin_sf(l, dis[i]) for i in range(k)], axis=0) + np.sum([w[i] * lin_sf(l, dis[i] + span[i]) for i in range(k)], axis=0) + ReactionatB * step_sf(l, L)
             M = ReactionatA * lin_sf(l, 0.001) - np.sum([w[i] * quad_sf(l, dis[i]) for i in range(k)], axis=0) + np.sum([w[i] * quad_sf(l, dis[i] + span[i]) for i in range(k)], axis=0) + ReactionatB * lin_sf(l, L)
 
-            plot_graphs(l, V, M)
             print(f'RA={ReactionatA:.2f} kN')
             print(f'RB={ReactionatB:.2f} kN')
+            plot_graphs(l, V, M)
+
 
         elif n == 3:
             k = pyin.inputInt('Enter the number of point loads: ', min=0)
@@ -151,9 +151,10 @@ def main():
             V = ReactionatA * step_sf(l, 0.001) - np.sum([P[i] * step_sf(l, x[i]) for i in range(k)], axis=0) - np.sum([w[i] * lin_sf(l, dis[i]) for i in range(c)], axis=0) + np.sum([w[i] * lin_sf(l, dis[i] + span[i]) for i in range(c)], axis=0) + ReactionatB * step_sf(l, distancebetweensupports)
             M = ReactionatA * lin_sf(l, 0.001) - np.sum([P[i] * lin_sf(l, x[i]) for i in range(k)], axis=0) - np.sum([w[i] * quad_sf(l, dis[i]) for i in range(c)], axis=0) + np.sum([w[i] * quad_sf(l, dis[i] + span[i]) for i in range(c)], axis=0) + ReactionatB * lin_sf(l, distancebetweensupports)
 
-            plot_graphs(l, V, M)
             print(f'RA={ReactionatA:.2f} kN')
             print(f'RB={ReactionatB:.2f} kN')
+
+            plot_graphs(l, V, M)
 
         elif n == 4:
             k = pyin.inputInt('Enter the number of point loads: ', min=0)
@@ -203,9 +204,10 @@ def main():
             V = ReactionatA * step_sf(l, 0.001) - np.sum([P[i] * step_sf(l, x[i]) for i in range(k)], axis=0) - np.sum([w[i] * lin_sf(l, dis[i]) for i in range(c)], axis=0) + np.sum([w[i] * lin_sf(l, dis[i] + span[i]) for i in range(c)], axis=0) + ReactionatB * step_sf(l, distancebetweensupports)
             M = ReactionatA * lin_sf(l, 0.001) - np.sum([P[i] * lin_sf(l, x[i]) for i in range(k)], axis=0) - np.sum([w[i] * quad_sf(l, dis[i]) for i in range(c)], axis=0) + np.sum([w[i] * quad_sf(l, dis[i] + span[i]) for i in range(c)], axis=0) + ReactionatB * lin_sf(l, distancebetweensupports) + np.sum([concmoment[i] * step_sf(l, concdistance[i]) for i in range(conc)], axis=0)
 
-            plot_graphs(l, V, M)
             print(f'RA={ReactionatA:.2f} kN')
             print(f'RB={ReactionatB:.2f} kN')
+            plot_graphs(l, V, M)
+
 
     elif choice == 2:
         print('1. Cantilever with only point loads on the span')
@@ -234,9 +236,10 @@ def main():
             V = RA * step_sf(l, 0.001) - np.sum([P[i] * step_sf(l, x[i]) for i in range(k)], axis=0)
             M = MA * step_sf(l, 0.001) - RA * lin_sf(l, 0) + np.sum([P[i] * lin_sf(l, x[i]) for i in range(k)], axis=0)
 
-            plot_graphs(l, V, M)
             print(f'RA={RA:.2f} kN')
             print(f'MA={MA:.2f} kNm')
+            plot_graphs(l, V, M)
+
 
         elif n == 2:
             k = pyin.inputInt('Enter the number of UDLs: ', min=0)
@@ -261,9 +264,10 @@ def main():
             V = RA * step_sf(l, 0.001) - np.sum([w[i] * lin_sf(l, dis[i]) for i in range(k)], axis=0) + np.sum([w[i] * lin_sf(l, dis[i] + span[i]) for i in range(k)], axis=0)
             M = MA * step_sf(l, 0.001) - RA * lin_sf(l, 0) + np.sum([w[i] * quad_sf(l, dis[i]) for i in range(k)], axis=0) - np.sum([w[i] * quad_sf(l, dis[i] + span[i]) for i in range(k)], axis=0)
 
-            plot_graphs(l, V, M)
             print(f'RA={RA:.2f} kN')
             print(f'MA={MA:.2f} kNm')
+            plot_graphs(l, V, M)
+
 
         elif n == 3:
             k = pyin.inputInt('Enter the number of point loads: ', min=0)
@@ -296,10 +300,11 @@ def main():
             V = RA * step_sf(l, 0.001) - np.sum([P[i] * step_sf(l, x[i]) for i in range(k)], axis=0) - np.sum([w[i] * lin_sf(l, dis[i]) for i in range(k)], axis=0) + np.sum([w[i] * lin_sf(l, dis[i] + span[i]) for i in range(k)], axis=0)
             M = MA * step_sf(l, 0.001) - RA * lin_sf(l, 0) + np.sum([P[i] * lin_sf(l, x[i]) for i in range(k)], axis=0) + np.sum([w[i] * quad_sf(l, dis[i]) for i in range(k)], axis=0) - np.sum([w[i] * quad_sf(l, dis[i] + span[i]) for i in range(k)], axis=0)
 
-            plot_graphs(l, V, M)
-
             print(f'RA={RA:.2f} kN')
             print(f'MA={MA:.2f} kNm')
+            plot_graphs(l, V, M)
+
+
 
         elif n == 4:
             k = pyin.inputInt('Enter the number of point loads: ', min=0)
@@ -342,10 +347,11 @@ def main():
             V = RA * step_sf(l, 0.001) - np.sum([P[i] * step_sf(l, x[i]) for i in range(k)], axis=0) - np.sum([w[i] * lin_sf(l, dis[i]) for i in range(k)], axis=0) + np.sum([w[i] * lin_sf(l, dis[i] + span[i]) for i in range(k)], axis=0)
             M = MA * step_sf(l, 0.001) - RA * lin_sf(l, 0) + np.sum([P[i] * lin_sf(l, x[i]) for i in range(k)], axis=0) + np.sum([w[i] * quad_sf(l, dis[i]) for i in range(k)], axis=0) - np.sum([w[i] * quad_sf(l, dis[i] + span[i]) for i in range(k)], axis=0) - np.sum([concmoment[i] * step_sf(l, concdistance[i]) for i in range(conc)], axis=0)
 
-            plot_graphs(l, V, M)
-
             print(f'RA={RA:.2f} kN')
             print(f'MA={MA:.2f} kNm')
+            plot_graphs(l, V, M)
+
+
 
 
 if __name__ == '__main__':
