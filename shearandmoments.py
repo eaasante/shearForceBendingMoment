@@ -58,8 +58,8 @@ def main():
             P = np.zeros(k)
             x = np.zeros(k)
             for i in range(k):
-                inputload = pyin.inputFloat('Enter the magnitude of the point load in kN: ')
-                inputdistance = pyin.inputFloat('Enter its distance from the left support in meters: ', max=L)
+                inputload = pyin.inputFloat(f'Enter the magnitude of point load {i + 1} in kN: ')
+                inputdistance = pyin.inputFloat('Enter the the distance between it and the left support in meters: ', max=L)
                 P[i] = inputload
                 x[i] = inputdistance
 
@@ -85,9 +85,9 @@ def main():
             span = np.zeros(k)
             dis = np.zeros(k)
             for i in range(k):
-                wx = pyin.inputFloat('Enter the magnitude of the UDL in kN/m: ')
+                wx = pyin.inputFloat(f'Enter the magnitude of UDL {i +1} in kN/m: ')
                 spanx = pyin.inputFloat('Enter the span of the UDL in meters: ', min=0, max=L)
-                disx = pyin.inputFloat('Enter the distance of the left end of UDL from the left support in meters: ', min=spanx-L, max=L-spanx)
+                disx = pyin.inputFloat(f'Enter the distance between the left end of UDL {i +1} from the left support in meters: ', min=spanx-L, max=L-spanx)
                 w[i] = wx
                 span[i] = spanx
                 dis[i] = disx
@@ -115,8 +115,8 @@ def main():
             P = np.zeros(k)
             x = np.zeros(k)
             for i in range(k):
-                inputload = pyin.inputFloat('Enter the magnitude of the point load in kN: ')
-                inputdistance = pyin.inputFloat('Enter its distance from the left support in meters: ', max=L)
+                inputload = pyin.inputFloat(f'Enter the magnitude of point load {i+1} in kN: ')
+                inputdistance = pyin.inputFloat('Enter the distance between and the left support in meters: ', max=L)
                 P[i] = inputload
                 x[i] = inputdistance
 
@@ -126,11 +126,9 @@ def main():
             span = np.zeros(c)
             dis = np.zeros(c)
             for i in range(c):
-                wx = pyin.inputFloat('Enter the magnitude of the UDL in kN/m: ')
-                spanx = pyin.inputFloat('Enter the span of the UDL in meters: ', min=0, max=L)
-                while spanx == 0:
-                    spanx = pyin.inputFloat('Invalid! Enter a valid span: ')
-                disx = pyin.inputFloat('Enter the distance of the left end of UDL from the left support in meters: ', lessThan=L)
+                wx = pyin.inputFloat(f'Enter the magnitude of the UDL {i +1} in kN/m: ')
+                spanx = pyin.inputFloat('Enter the span of the UDL in meters: ', greaterThan=0, max=L)
+                disx = pyin.inputFloat(f'Enter the distance between the left end of UDL {i +1} and the left support in meters: ', min=spanx-L, max=L-spanx)
                 w[i] = wx
                 span[i] = spanx
                 dis[i] = disx
@@ -162,8 +160,8 @@ def main():
             P = np.zeros(k)
             x = np.zeros(k)
             for i in range(k):
-                inputload = pyin.inputFloat('Enter the magnitude of the point load in kN: ')
-                inputdistance = pyin.inputFloat('Enter its distance from the left support in meters: ', max=L)
+                inputload = pyin.inputFloat(f'Enter the magnitude of point load {i +1} in kN: ')
+                inputdistance = pyin.inputFloat('Enter the distance between it and the left support in meters: ', max=L)
                 P[i] = inputload
                 x[i] = inputdistance
 
@@ -172,9 +170,9 @@ def main():
             span = np.zeros(c)
             dis = np.zeros(c)
             for i in range(c):
-                wx = pyin.inputFloat('Enter the magnitude of the UDL in kN/m: ')
+                wx = pyin.inputFloat(f'Enter the magnitude of UDL {i +1} in kN/m: ')
                 spanx = pyin.inputFloat('Enter the span of the UDL in meters: ', greaterThan=0, max=L)
-                disx = pyin.inputFloat('Enter the distance of the left end of UDL from the left support in meters: ', lessThan=L)
+                disx = pyin.inputFloat(f'Enter the distance between the left end of UDL {i +1} and the left support in meters: ', min=spanx-L, max=L-spanx)
                 w[i] = wx
                 span[i] = spanx
                 dis[i] = disx
@@ -184,8 +182,8 @@ def main():
             concmoment = np.zeros(conc)
             concdistance = np.zeros(conc)
             for i in range(conc):
-                cm = pyin.inputFloat('Enter magnitude of concentrated moment in kNm: ')
-                cmdis = pyin.inputFloat('Enter its distance from the left support in meters: ', lessThan=L)
+                cm = pyin.inputFloat(f'Enter magnitude of concentrated moment {i +1} in kNm: ')
+                cmdis = pyin.inputFloat('Enter the distance between it and the left support in meters: ', max=L)
                 concmoment[i] = cm
                 concdistance[i] = cmdis
 
@@ -223,8 +221,8 @@ def main():
             P = np.zeros(k)
             x = np.zeros(k)
             for i in range(k):
-                inputload = pyin.inputFloat('Enter the magnitude of the point load in kN: ')
-                inputdistance = pyin.inputFloat('Enter its distance from the support in meters: ', greaterThan==0, lessThan=L)
+                inputload = pyin.inputFloat(f'Enter the magnitude of point load {i +1} in kN: ')
+                inputdistance = pyin.inputFloat('Enter the distance between it and the support in meters: ', min=0, max=L)
                 P[i] = inputload
                 x[i] = inputdistance
 
@@ -248,9 +246,9 @@ def main():
             span = np.zeros(k)
             dis = np.zeros(k)
             for i in range(k):
-                wx = pyin.inputFloat('Enter the magnitude of the UDL in kN/m: ')
+                wx = pyin.inputFloat(f'Enter the magnitude of UDL {i +1} in kN/m: ')
                 spanx = pyin.inputFloat('Enter the span of the UDL in meters: ', greaterThan=0, max=L)
-                disx = pyin.inputFloat('Enter the distance of the left end of UDL from the support in meters: ', min=0, lessThan=L)
+                disx = pyin.inputFloat(f'Enter the distance between the left end of UDL {i +1} and the support in meters: ', min=0, max=L-spanx)
                 w[i] = wx
                 span[i] = spanx
                 dis[i] = disx
@@ -275,8 +273,8 @@ def main():
             P = np.zeros(k)
             x = np.zeros(k)
             for i in range(k):
-                inputload = pyin.inputFloat('Enter the magnitude of the point load in kN: ')
-                inputdistance = pyin.inputFloat('Enter its distance from the support in meters: ')
+                inputload = pyin.inputFloat(f'Enter the magnitude of point load {i +1} in kN: ')
+                inputdistance = pyin.inputFloat('Enter the distance between it and the support in meters: ', min=0, max=L)
                 P[i] = inputload
                 x[i] = inputdistance
 
@@ -285,9 +283,9 @@ def main():
             span = np.zeros(k)
             dis = np.zeros(k)
             for i in range(k):
-                wx = pyin.inputFloat('Enter the magnitude of the UDL in kN/m: ')
+                wx = pyin.inputFloat(f'Enter the magnitude of UDL {i +1}in kN/m: ')
                 spanx = pyin.inputFloat('Enter the span of the UDL in meters: ', greaterThan=0, max=L)
-                disx = pyin.inputFloat('Enter the distance of the left end of UDL from the support in meters: ', min=0, lessThan=L)
+                disx = pyin.inputFloat(f'Enter the distance between the left end of UDL {i +1} and the support in meters: ', min=0, max=L-spanx)
                 w[i] = wx
                 span[i] = spanx
                 dis[i] = disx
@@ -311,8 +309,8 @@ def main():
             P = np.zeros(k)
             x = np.zeros(k)
             for i in range(k):
-                inputload = pyin.inputFloat('Enter the magnitude of the point load in kN: ')
-                inputdistance = pyin.inputFloat('Enter its distance from the support in meters: ', min=0, max=L)
+                inputload = pyin.inputFloat(f'Enter the magnitude of point load {i +1} in kN: ')
+                inputdistance = pyin.inputFloat('Enter the distance between it and the support in meters: ', min=0, max=L)
                 P[i] = inputload
                 x[i] = inputdistance
 
@@ -322,9 +320,9 @@ def main():
             span = np.zeros(k)
             dis = np.zeros(k)
             for i in range(k):
-                wx = pyin.inputFloat('Enter the magnitude of the UDL in kN/m: ')
+                wx = pyin.inputFloat(f'Enter the magnitude of UDL in {i +1} kN/m: ')
                 spanx = pyin.inputFloat('Enter the span of the UDL in meters: ', greaterThan=0, max=L)
-                disx = pyin.inputFloat('Enter the distance of the left end of UDL from the support in meters: ', min=0, lessThan=L)
+                disx = pyin.inputFloat(f'Enter the distance between the left end of UDL {i +1} and the support in meters: ', min=0, max=L-spanx)
                 w[i] = wx
                 span[i] = spanx
                 dis[i] = disx
@@ -334,8 +332,8 @@ def main():
             concmoment = np.zeros(conc)
             concdistance = np.zeros(conc)
             for i in range(conc):
-                cm = pyin.inputFloat('Enter magnitude of concentrated moment in kNm: ')
-                cmdis = pyin.inputFloat('Enter its distance from the support in meters: ', max=L)
+                cm = pyin.inputFloat(f'Enter the magnitude of concentrated moment {i +1} in kNm: ')
+                cmdis = pyin.inputFloat('Enter the distance between it and the support in meters: ', min=0, max=L)
                 concmoment[i] = cm
                 concdistance[i] = cmdis
 
