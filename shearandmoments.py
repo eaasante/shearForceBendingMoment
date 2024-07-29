@@ -194,7 +194,7 @@ def main():
             else:
                 l = np.linspace(0, L, 1000)
 
-            distancebetweensupports = pyin.inputFloat('Enter distance between left support and right support in meters: ', greaterThan=0, lessThan=L)
+            distancebetweensupports = pyin.inputFloat('Enter distance between left support and right support in meters: ', greaterThan=0, max=L)
             totalmoment = np.sum(P * x) + np.sum(w * span * (dis + (span / 2))) + np.sum(concmoment)
             sumofforces = np.sum(P) + np.sum(w * span)
             ReactionatB = totalmoment / distancebetweensupports
